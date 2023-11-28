@@ -57,6 +57,7 @@ int main() {
 
                 if (eleccion) {
                     system(input);
+                    exit(0);
                 } else {
                     execvp(args[0], args);
                     exit(0);
