@@ -34,7 +34,6 @@ int ejecutarComando(char* comando) {
 }
 
 int main() {
-    //En vez de que sea ls por defecto, cambio la sentencia para que el usuario meta por pantalla el comando que quiere ejecutar
     char comando[100];
     printf("Introduce un comando válido: ");
     scanf("%s", comando);
