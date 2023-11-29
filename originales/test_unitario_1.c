@@ -23,7 +23,7 @@ int ejecutarComando(char* comando) {
         args[i] = NULL;
 
         execvp(args[0], args);
-        exit(0);
+        
     } else if (pid > 0) {
         wait(NULL);
     } else {

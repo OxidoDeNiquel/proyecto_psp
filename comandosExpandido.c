@@ -60,7 +60,7 @@ int main() {
                     exit(0);
                 } else {
                     execvp(args[0], args);
-                    exit(0);
+                    
                 }
             } else {
                 wait(NULL); // Proceso padre esperando al hijo
