@@ -7,3 +7,5 @@
 
 --> primerTestUnitario : a partir del codigo anterior se ha arreglado el codigo original del metodo para que no de falsos positivos
 
+-- test_unitario_con_historial : he cogido el codigo del primerTestUnitario y he hecho dos modificaciones para poder introducir un array bidimensional de historial, 
+dos comandos con los que agregar al historial y leer el historial
