@@ -52,7 +52,7 @@ int ejecutarComando(char* comando) {
             return -1; // El comando falló
         }
     } else {
-        return -1; // Error al crear el proceso hijo
+        return -2; // Error al crear el proceso hijo
     }
 }
 
@@ -72,9 +72,12 @@ int main() {
             if (resultado == 0) {
                 printf("Comando ingresado: Pasado - '%s' se ejecutó correctamente.\n", comando);
                 agregarAlHistorial(comando);
-            } else {
-                printf("Comando ingresado: Fallido - Error al ejecutar '%s'.\n", comando);
-            }
+            }  if(resultado == -1){
+        printf("Prueba 1: Fallida - Error al ejecutar el comando '%s'.\n", comando);
+
+    }
+    else{
+         printf("Prueba 1: error - Error al crear el proceso hijo");}
         }
     }
 
