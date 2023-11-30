@@ -21,16 +21,20 @@ int ejecutarComando(char* comando) {
             i++;
         }
         args[i] = NULL;
-
         execvp(args[0], args);
-        exit(0);
+        exit(EXIT_FAILURE); // Si execvp falla, se sale con código de error
     } else if (pid > 0) {
-        wait(NULL);
+        int estado;
+        wait(&estado);
+
+        if (WEXITSTATUS(estado) == EXIT_SUCCESS) {
+            return 0; // Éxito
+        } else {
+            return -1; // El comando falló
+        }
     } else {
         return -1; // Error al crear el proceso hijo
     }
-
-    return 0; // Éxito
 }
 
 int main() {
@@ -48,4 +52,3 @@ int main() {
 
     return 0;
 }
-
