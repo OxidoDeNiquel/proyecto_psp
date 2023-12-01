@@ -41,7 +41,7 @@ int main() {
 
             printf("Nombre de la shell cambiado a %s\n", nombreShell);
 
-        } else if(strcmp(input, "opcionOculta") == 0){
+        } else if(strcmp(input, "comandoOculto") == 0){
             const int totalSteps = 100;
 
             for (int i = 0; i <= totalSteps; i++) {
