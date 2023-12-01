@@ -43,7 +43,12 @@ int main() {
     char comando[100];
     printf("Introduce un comando válido: ");
     scanf("%s", comando);
+    
+    if(strlen(comando)>= MAX_LINE){
+        printf("Error: El comando excede el límite de longitud permitido.\n");
+        return -3; }
 
+    else{
     int resultado = ejecutarComando(comando);
 
     if (resultado == 0) {
@@ -55,5 +60,5 @@ int main() {
     else{
          printf("Prueba 1: error - Error al crear el proceso hijo");}
 
-    return 0;
+    return 0;}
 }
