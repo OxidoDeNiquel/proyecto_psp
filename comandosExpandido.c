@@ -4,18 +4,23 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/time.h>
 
 #define MAX_LINE 80 /* Longitud máxima del comando */
 
 int main() {
     char input[MAX_LINE];
     int should_run = 1;
-    //modificacion 1:
     int eleccion = 0; // Variable para elegir entre execvp y system
 
     while (should_run) {
         printf("MiShell> ");
         fflush(stdout);
+
+        struct timeval start_time, end_time;
+
+        // Captura el tiempo de inicio antes de recibir la entrada
+        gettimeofday(&start_time, NULL);
 
         fgets(input, MAX_LINE, stdin);
         input[strlen(input) - 1] = '\0'; // Reemplazar el salto de línea
@@ -61,10 +66,20 @@ int main() {
                     exit(0);
                 } else {
                     execvp(args[0], args);
-                    
+                    perror("Error en execvp"); // Mostrar un mensaje de error si execvp falla
+                    exit(EXIT_FAILURE);
                 }
             } else {
                 wait(NULL); // Proceso padre esperando al hijo
+
+                // Captura el tiempo de finalización después de la ejecución del comando
+                gettimeofday(&end_time, NULL);
+
+                // Calcula el tiempo de ejecución en milisegundos
+                long execution_time = (end_time.tv_sec - start_time.tv_sec) * 1000 +
+                                      (end_time.tv_usec - start_time.tv_usec) / 1000;
+
+                printf("Comando ejecutado en %ld milisegundos.\n", execution_time);
             }
         }
     }
