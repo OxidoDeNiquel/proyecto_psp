@@ -22,6 +22,7 @@ int ejecutarComando(char* comando) {
         }
         args[i] = NULL;
         execvp(args[0], args);
+        //modificacion 3
         exit(EXIT_FAILURE); // Si execvp falla, se sale con código de error
     } else if (pid > 0) {
         int estado;
@@ -38,6 +39,7 @@ int ejecutarComando(char* comando) {
 }
 
 int main() {
+    //modificacion 2
     char comando[100];
     printf("Introduce un comando válido: ");
     scanf("%s", comando);

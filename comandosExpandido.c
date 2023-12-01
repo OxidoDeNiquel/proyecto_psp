@@ -10,6 +10,7 @@
 int main() {
     char input[MAX_LINE];
     int should_run = 1;
+    //modificacion 1:
     int eleccion = 0; // Variable para elegir entre execvp y system
 
     while (should_run) {
