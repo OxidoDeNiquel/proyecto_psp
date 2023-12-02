@@ -19,3 +19,9 @@ dos comandos con los que agregar al historial y leer el historial
 -- comandosPersonalizados : he añadido más comandos los cuales editan la shell como "changeNameShell", que lo que hace es cambiar el nombre a la shell, para consultar todos los comandos he puesto un comando adicional que es "opextra".
 
 Además hay una comando oculto llamado "comandoOculto" que recomiendo que revises Oscar
+
+
+
+Nio, he puesto en diferentes colores en el texto de drive para diferenciar en qué codigo se estan usando y asi luego lo organizamos.
+
+Si te parece bien podriamos formatearlo del estilo Codigo original : captura y luego listamos las modificaciones 

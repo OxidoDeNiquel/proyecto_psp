@@ -13,8 +13,8 @@ int indiceHistorial = 0;
 
 void agregarAlHistorial(char* comando) {
     strncpy(historial[indiceHistorial], comando, MAX_LINE - 1);
-    historial[indiceHistorial][MAX_LINE - 1] = '\0'; // Asegurar la terminación nula
-    indiceHistorial = (indiceHistorial + 1) % MAX_HISTORY; // Circular el historial
+    historial[indiceHistorial][MAX_LINE - 1] = '\0'; // Aseguramos la terminación nula
+    indiceHistorial = (indiceHistorial + 1) % MAX_HISTORY; // de esta manera cuando llegue al final volvera al principio para empezar la rueda otra vez
 }
 
 void imprimirHistorial() {
