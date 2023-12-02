@@ -4,10 +4,8 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <ctype.h>
 
 #define MAX_LINE 80
-
 int esLetra(char c) {
     return isalpha(c);
 }
@@ -18,7 +16,6 @@ int ejecutarComando(char* comando) {
         printf("Error: El comando no comienza con una letra.\n");
         return -1;
     }
-
     pid_t pid = fork();
 
     if (pid == 0) {
@@ -34,24 +31,31 @@ int ejecutarComando(char* comando) {
         args[i] = NULL;
 
         execvp(args[0], args);
-        exit(0);
+        perror("Error al ejecutar execvp");  // Imprimir error si execvp falla
+        exit(EXIT_FAILURE);
     } else if (pid > 0) {
-        wait(NULL);
-    } else {
-        return -1; // Error al crear el proceso hijo
-    }
+        int status;
+        wait(&status);
 
-    return 0; // Éxito
+        if (WIFEXITED(status) && WEXITSTATUS(status) == 0) {
+            return 0;  // Éxito
+        } else {
+            return -1; // Falla al ejecutar el comando
+        }
+    } else {
+        perror("Error al crear el proceso hijo");
+        exit(EXIT_FAILURE);
+    }
 }
 
 int main() {
     char comando_inexistente[] = "xyzabc";
     int resultado = ejecutarComando(comando_inexistente);
 
-    if (resultado == -1) {
-        printf("Prueba 2: Fallida - Error al ejecutar comando inexistente.\n");
+    if (resultado == 0) {
+        printf("Prueba 2: Fallida - El comando inexistente se ejecutó correctamente.\n");
     } else {
-        printf("Prueba 2: Pasada - El comando inexistente se ejecutó correctamente.\n");
+        printf("Prueba 2: Pasada - Error al ejecutar comando inexistente.\n");
     }
 
     return 0;
