@@ -20,6 +20,9 @@ dos comandos con los que agregar al historial y leer el historial
 
 Además hay una comando oculto llamado "comandoOculto" que recomiendo que revises Oscar
 
+-- test_negativo.c : he corregido el test_unitario_2.c,  Para que la prueba sea considerada como "pasada", se debe ajustar la lógica de manejo de errores en la función `ejecutarComando`. En lugar de retornar -1 en caso de error al crear el proceso hijo, se debe imprimir el mensaje de error y salir con un código de error correspondiente.
+
+-- test_negativo_letra:  se verifica si el primer carácter del comando es una letra antes de continuar con la ejecución. Si no es una letra, se imprime un mensaje de error 
 
 
 Nio, he puesto en diferentes colores en el texto de drive para diferenciar en qué codigo se estan usando y asi luego lo organizamos.
