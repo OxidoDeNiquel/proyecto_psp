@@ -72,7 +72,7 @@ int main() {
             } else {
                 wait(NULL); // Proceso padre esperando al hijo
 
-                // Captura el tiempo de finalización después de la ejecución del comando
+                // aqui pillamos el tiempo en el que se termina el método
                 gettimeofday(&end_time, NULL);
 
                 // Calcula el tiempo de ejecución en milisegundos
