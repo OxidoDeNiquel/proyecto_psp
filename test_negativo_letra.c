@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <ctype.h>
 
 #define MAX_LINE 80
 int esLetra(char c) {
@@ -49,7 +50,7 @@ int ejecutarComando(char* comando) {
 }
 
 int main() {
-    char comando_inexistente[] = "xyzabc";
+    char comando_inexistente[] = "-xyzabc";
     int resultado = ejecutarComando(comando_inexistente);
 
     if (resultado == 0) {
